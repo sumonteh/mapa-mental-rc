@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mapa Mental Interactivo: Relación Céntrica</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<canvas id="lines"></canvas>
+<div id="mapa-mental">
+  <div class="nodo" data-id="central" data-child="definicion,imagenologia,aplicaciones,rcmi,futuro" style="left: 50vw; top: 50vh;">Relación Céntrica</div>
+  <div class="nodo" data-id="definicion" data-child="rc-definicion1,rc-definicion2,rc-definicion3" style="left: 30vw; top: 35vh;">Definición RC</div>
+  <div class="nodo" data-id="imagenologia" data-child="img-cbct,img-rm,img-opg" style="left: 70vw; top: 35vh;">Imagenología</div>
+  <div class="nodo" data-id="aplicaciones" data-child="app-protesis,app-ortodoncia,app-ttm" style="left: 30vw; top: 65vh;">Aplicaciones</div>
+  <div class="nodo" data-id="rcmi" data-child="disc-discrepancia,disc-sintomas" style="left: 70vw; top: 65vh;">RC vs MI</div>
+  <div class="nodo" data-id="futuro" data-child="ia-analisis,ia-estandarizacion" style="left: 50vw; top: 80vh;">Tecnología / IA</div>
+  <div class="nodo" data-id="rc-definicion1" style="left: 20vw; top: 25vh;">Posición Anterosuperior</div>
+  <div class="nodo" data-id="rc-definicion2" style="left: 20vw; top: 45vh;">Independiente del contacto dental</div>
+  <div class="nodo" data-id="rc-definicion3" style="left: 25vw; top: 40vh;">Relación reproducible</div>
+  <div class="nodo" data-id="img-cbct" style="left: 80vw; top: 25vh;">CBCT: Estructuras óseas</div>
+  <div class="nodo" data-id="img-rm" style="left: 80vw; top: 40vh;">RM: Tejidos blandos</div>
+  <div class="nodo" data-id="img-opg" style="left: 80vw; top: 55vh;">OPG: Vista general</div>
+  <div class="nodo" data-id="app-protesis" style="left: 20vw; top: 60vh;">Rehabilitación Protésica</div>
+  <div class="nodo" data-id="app-ortodoncia" style="left: 20vw; top: 70vh;">Ortodoncia</div>
+  <div class="nodo" data-id="app-ttm" style="left: 20vw; top: 80vh;">Trastornos TTM</div>
+  <div class="nodo" data-id="disc-discrepancia" style="left: 80vw; top: 75vh;">Discrepancia Condilar</div>
+  <div class="nodo" data-id="disc-sintomas" style="left: 75vw; top: 85vh;">Síntomas vs Desplazamiento</div>
+  <div class="nodo" data-id="ia-analisis" style="left: 40vw; top: 90vh;">IA en análisis de imágenes</div>
+  <div class="nodo" data-id="ia-estandarizacion" style="left: 60vw; top: 90vh;">Estandarización digital</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

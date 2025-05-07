@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #f4f6f9;
+  font-family: sans-serif;
+}
+#mapa-mental {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.nodo {
+  position: absolute;
+  min-width: 140px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  cursor: move;
+  user-select: none;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: bold;
+  display: none;
+  color: #fff;
+}
+.nodo[data-id="central"] {
+  background: #1e88e5;
+  font-size: 18px;
+  display: block;
+}
+.nodo[data-id="definicion"], .nodo[data-id^="rc-"] { background: #43a047; }
+.nodo[data-id="imagenologia"], .nodo[data-id^="img-"] { background: #f4511e; }
+.nodo[data-id="aplicaciones"], .nodo[data-id^="app-"] { background: #8e24aa; }
+.nodo[data-id="rcmi"], .nodo[data-id^="disc-"] { background: #ffb300; }
+.nodo[data-id="futuro"], .nodo[data-id^="ia-"] { background: #00acc1; }
+canvas#lines {
+  position: absolute;
+  z-index: 0;
+}
