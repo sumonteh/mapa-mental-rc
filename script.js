@@ -76,14 +76,18 @@ nodos.forEach(nodo => {
     document.addEventListener('touchend', detener, { once: true });
   });
 
-  nodo.addEventListener('dblclick', () => {
+  const mostrarHijos = () => {
     const hijos = nodo.dataset.child?.split(',') || [];
     hijos.forEach(id => {
       const hijo = document.querySelector(`.nodo[data-id="${id}"]`);
-      if (hijo) {
-        hijo.style.display = 'block';
-      }
+      if (hijo) hijo.style.display = 'block';
     });
     dibujarLineas();
+  };
+
+  nodo.addEventListener('dblclick', mostrarHijos);      // PC
+  nodo.addEventListener('touchend', e => {              // Móviles
+    e.preventDefault();
+    mostrarHijos();
   });
 });
