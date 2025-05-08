@@ -7,28 +7,47 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<canvas id="lines"></canvas>
-<div id="mapa-mental">
-  <div class="nodo" data-id="central" data-child="definicion,imagenologia,aplicaciones,rcmi,futuro" style="left: 50vw; top: 50vh;">Relación Céntrica</div>
-  <div class="nodo" data-id="definicion" data-child="rc-definicion1,rc-definicion2,rc-definicion3" style="left: 30vw; top: 35vh;">Definición RC</div>
-  <div class="nodo" data-id="imagenologia" data-child="img-cbct,img-rm,img-opg" style="left: 70vw; top: 35vh;">Imagenología</div>
-  <div class="nodo" data-id="aplicaciones" data-child="app-protesis,app-ortodoncia,app-ttm" style="left: 30vw; top: 65vh;">Aplicaciones</div>
-  <div class="nodo" data-id="rcmi" data-child="disc-discrepancia,disc-sintomas" style="left: 70vw; top: 65vh;">RC vs MI</div>
-  <div class="nodo" data-id="futuro" data-child="ia-analisis,ia-estandarizacion" style="left: 50vw; top: 80vh;">Tecnología / IA</div>
-  <div class="nodo" data-id="rc-definicion1" style="left: 20vw; top: 25vh;">Posición Anterosuperior</div>
-  <div class="nodo" data-id="rc-definicion2" style="left: 20vw; top: 45vh;">Independiente del contacto dental</div>
-  <div class="nodo" data-id="rc-definicion3" style="left: 25vw; top: 40vh;">Relación reproducible</div>
-  <div class="nodo" data-id="img-cbct" style="left: 80vw; top: 25vh;">CBCT: Estructuras óseas</div>
-  <div class="nodo" data-id="img-rm" style="left: 80vw; top: 40vh;">RM: Tejidos blandos</div>
-  <div class="nodo" data-id="img-opg" style="left: 80vw; top: 55vh;">OPG: Vista general</div>
-  <div class="nodo" data-id="app-protesis" style="left: 20vw; top: 60vh;">Rehabilitación Protésica</div>
-  <div class="nodo" data-id="app-ortodoncia" style="left: 20vw; top: 70vh;">Ortodoncia</div>
-  <div class="nodo" data-id="app-ttm" style="left: 20vw; top: 80vh;">Trastornos TTM</div>
-  <div class="nodo" data-id="disc-discrepancia" style="left: 80vw; top: 75vh;">Discrepancia Condilar</div>
-  <div class="nodo" data-id="disc-sintomas" style="left: 75vw; top: 85vh;">Síntomas vs Desplazamiento</div>
-  <div class="nodo" data-id="ia-analisis" style="left: 40vw; top: 90vh;">IA en análisis de imágenes</div>
-  <div class="nodo" data-id="ia-estandarizacion" style="left: 60vw; top: 90vh;">Estandarización digital</div>
-</div>
-<script src="script.js"></script>
+  <canvas id="lines"></canvas>
+  <div id="mapa-mental">
+    <div class="nodo" data-id="central" data-child="definicion,imagenologia,aplicaciones,rcmi,futuro" style="left: 50vw; top: 50vh;">Relación Céntrica</div>
+
+    <!-- Definición RC -->
+    <div class="nodo" data-id="definicion" data-child="rc-definicion1,rc-definicion2,rc-reproducible,rc-zona" style="left: 30vw; top: 35vh;">Definición RC</div>
+    <div class="nodo" data-id="rc-definicion1" style="left: 20vw; top: 25vh;">Posición Anterosuperior</div>
+    <div class="nodo" data-id="rc-definicion2" style="left: 20vw; top: 45vh;">Independiente del contacto dental</div>
+    <div class="nodo" data-id="rc-reproducible" style="left: 25vw; top: 40vh;">Relación Reproducible</div>
+    <div class="nodo" data-id="rc-zona" style="left: 22vw; top: 32vh;">Zona Intermedia del Disco</div>
+
+    <!-- Imagenología -->
+    <div class="nodo" data-id="imagenologia" data-child="img-cbct,img-rm,img-opg,img-comparacion,img-multimodal,img-variabilidad" style="left: 70vw; top: 35vh;">Imagenología</div>
+    <div class="nodo" data-id="img-cbct" style="left: 80vw; top: 25vh;">CBCT: Estructuras óseas</div>
+    <div class="nodo" data-id="img-rm" style="left: 80vw; top: 40vh;">RM: Tejidos blandos</div>
+    <div class="nodo" data-id="img-opg" style="left: 80vw; top: 55vh;">Ortopantomografías: Vista general</div>
+    <div class="nodo" data-id="img-comparacion" style="left: 75vw; top: 20vh;">CBCT vs RM</div>
+    <div class="nodo" data-id="img-multimodal" style="left: 75vw; top: 30vh;">Imagenología Multimodal</div>
+    <div class="nodo" data-id="img-variabilidad" style="left: 75vw; top: 50vh;">Variabilidad Posicional</div>
+
+    <!-- Aplicaciones -->
+    <div class="nodo" data-id="aplicaciones" data-child="app-protesis,app-ortodoncia,app-ttm,app-preq,app-diagnostico,app-validacion" style="left: 30vw; top: 65vh;">Aplicaciones</div>
+    <div class="nodo" data-id="app-protesis" style="left: 20vw; top: 60vh;">Rehabilitación Protésica</div>
+    <div class="nodo" data-id="app-ortodoncia" style="left: 20vw; top: 70vh;">Ortodoncia</div>
+    <div class="nodo" data-id="app-ttm" style="left: 20vw; top: 80vh;">Trastornos TTM</div>
+    <div class="nodo" data-id="app-preq" style="left: 18vw; top: 65vh;">Evaluación Prequirúrgica</div>
+    <div class="nodo" data-id="app-diagnostico" style="left: 18vw; top: 75vh;">Dx. Desplazamiento Discal</div>
+    <div class="nodo" data-id="app-validacion" style="left: 18vw; top: 85vh;">Validación de Técnicas</div>
+
+    <!-- RC vs MI -->
+    <div class="nodo" data-id="rcmi" data-child="disc-discrepancia,disc-magnitud,disc-significado" style="left: 70vw; top: 65vh;">RC vs MI</div>
+    <div class="nodo" data-id="disc-discrepancia" style="left: 80vw; top: 75vh;">Discrepancia Condilar</div>
+    <div class="nodo" data-id="disc-magnitud" style="left: 77vw; top: 80vh;">Magnitud del Desplazamiento</div>
+    <div class="nodo" data-id="disc-significado" style="left: 75vw; top: 85vh;">Significado Clínico</div>
+
+    <!-- Tecnología / IA -->
+    <div class="nodo" data-id="futuro" data-child="ia-analisis,ia-estandarizacion,ia-integracion" style="left: 50vw; top: 80vh;">Tecnología / IA</div>
+    <div class="nodo" data-id="ia-analisis" style="left: 40vw; top: 90vh;">IA en análisis de imágenes</div>
+    <div class="nodo" data-id="ia-estandarizacion" style="left: 50vw; top: 90vh;">Protocolos Estandarizados</div>
+    <div class="nodo" data-id="ia-integracion" style="left: 60vw; top: 90vh;">Integración con Movimiento Mandibular</div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

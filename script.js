@@ -4,19 +4,18 @@ const nodos = document.querySelectorAll('.nodo');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const conexiones = [
-  ['central', 'definicion'], ['central', 'imagenologia'], ['central', 'aplicaciones'],
-  ['central', 'rcmi'], ['central', 'futuro'],
-  ['definicion', 'rc-definicion1'], ['definicion', 'rc-definicion2'], ['definicion', 'rc-definicion3'],
-  ['imagenologia', 'img-cbct'], ['imagenologia', 'img-rm'], ['imagenologia', 'img-opg'],
-  ['aplicaciones', 'app-protesis'], ['aplicaciones', 'app-ortodoncia'], ['aplicaciones', 'app-ttm'],
-  ['rcmi', 'disc-discrepancia'], ['rcmi', 'disc-sintomas'],
-  ['futuro', 'ia-analisis'], ['futuro', 'ia-estandarizacion']
-];
+const conexiones = [];
+nodos.forEach(n => {
+  const hijos = n.dataset.child?.split(',') || [];
+  hijos.forEach(h => conexiones.push([n.dataset.id, h]));
+});
 
 function getPos(id) {
   const el = document.querySelector(`.nodo[data-id="${id}"]`);
-  return { x: el.offsetLeft + el.offsetWidth / 2, y: el.offsetTop + el.offsetHeight / 2 };
+  return {
+    x: el.offsetLeft + el.offsetWidth / 2,
+    y: el.offsetTop + el.offsetHeight / 2
+  };
 }
 
 function dibujarLineas() {
@@ -38,31 +37,52 @@ function dibujarLineas() {
   });
 }
 
-dibujarLineas();
-window.addEventListener('resize', dibujarLineas);
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  dibujarLineas();
+});
 
 nodos.forEach(nodo => {
   let offsetX, offsetY;
+  let isTouch = false;
+
   const mover = e => {
-    nodo.style.left = `${e.clientX - offsetX}px`;
-    nodo.style.top = `${e.clientY - offsetY}px`;
+    const clientX = isTouch ? e.touches[0].clientX : e.clientX;
+    const clientY = isTouch ? e.touches[0].clientY : e.clientY;
+    nodo.style.left = `${clientX - offsetX}px`;
+    nodo.style.top = `${clientY - offsetY}px`;
     dibujarLineas();
   };
 
+  const detener = () => {
+    document.removeEventListener('mousemove', mover);
+    document.removeEventListener('touchmove', mover);
+  };
+
   nodo.addEventListener('mousedown', e => {
+    isTouch = false;
     offsetX = e.clientX - nodo.offsetLeft;
     offsetY = e.clientY - nodo.offsetTop;
     document.addEventListener('mousemove', mover);
-    document.addEventListener('mouseup', () => {
-      document.removeEventListener('mousemove', mover);
-    }, { once: true });
+    document.addEventListener('mouseup', detener, { once: true });
+  });
+
+  nodo.addEventListener('touchstart', e => {
+    isTouch = true;
+    offsetX = e.touches[0].clientX - nodo.offsetLeft;
+    offsetY = e.touches[0].clientY - nodo.offsetTop;
+    document.addEventListener('touchmove', mover);
+    document.addEventListener('touchend', detener, { once: true });
   });
 
   nodo.addEventListener('dblclick', () => {
     const hijos = nodo.dataset.child?.split(',') || [];
     hijos.forEach(id => {
       const hijo = document.querySelector(`.nodo[data-id="${id}"]`);
-      if (hijo) hijo.style.display = 'block';
+      if (hijo) {
+        hijo.style.display = 'block';
+      }
     });
     dibujarLineas();
   });
